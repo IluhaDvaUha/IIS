@@ -1,0 +1,26 @@
+@startuml
+left to right direction
+actor "Клиент" as fc
+rectangle Автомойка {
+  usecase "Сделать заказ" as UC1
+  usecase "Найти автомойку" as UC1.1
+  usecase "Выбрать дату и время" as UC1.2
+  usecase "Оплатить" as UC1.3
+  usecase "Выбрать услугу" as UC1.4
+  usecase "Отменить запись" as UC2
+  usecase "Тех поддержка" as UC3
+}
+
+rectangle "Платежная система" as pl 
+
+fc --> UC1
+UC1 ..> UC1.1: <include>
+UC1 ..> UC1.2: <include>
+UC1 ..> UC1.3: <include>
+UC1 ..> UC1.4: <include>
+fc --> UC2
+fc --> UC3
+
+UC1.3 <-- pl
+
+@enduml
